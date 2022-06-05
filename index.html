@@ -110,11 +110,11 @@
                                 [{
                                     zoom: 5,
                                     value: grades[1]
-                                }, radii[1]],
+                                }, radii[0]],
                                 [{
                                     zoom: 5,
                                     value: grades[2]
-                                }, radii[2]]
+                                }, radii[0]]
                             ]
                         },
                         'circle-color': {
@@ -134,7 +134,7 @@
             );
 
 
-            // click on tree to view magnitude in a popup
+            // click on tree to view rating in a popup
             map.on('click', 'parks-point', (event) => {
                 new mapboxgl.Popup()
                     .setLngLat(event.features[0].geometry.coordinates)
@@ -142,8 +142,9 @@
                     .addTo(map);
             });
 
-        });
+            
 
+        });
 
         // create legend
         const legend = document.getElementById('legend');
@@ -156,7 +157,7 @@
             vbreak = grades[i];
             // you need to manually adjust the radius of each dot on the legend 
             // in order to make sure the legend can be properly referred to the dot on the map.
-            dot_radii = 2 * radii[i];
+            dot_radii = 2 * radii[1];
             labels.push(
                 '<p class="break"><i class="dot" style="background:' + colors[i] + '; width: ' + dot_radii +
                 'px; height: ' +
