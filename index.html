@@ -79,8 +79,8 @@
             center: [-122, 47.4], // starting center
         });
 
-        const grades = [3, 4, 5],
-            colors = ['rgb(208,209,230)', 'rgb(103,169,207)', 'rgb(1,108,89)'],
+        const grades = [3, 3.5, 4, 4.5, 5],
+            colors = ['rgb(231,108,83)', 'rgb(239,208,119)', 'rgb(38,148,139)', 'rgb(0,153,169)', 'rgb(0,252,168)'],
             radii = [5, 10, 15];
 
         //load data to the map as new layers.
@@ -125,7 +125,7 @@
                                 [grades[2], colors[2]]
                             ]
                         },
-                        'circle-stroke-color': 'white',
+                        'circle-stroke-color': 'black',
                         'circle-stroke-width': 1,
                         'circle-opacity': 0.6
                     }
@@ -150,7 +150,7 @@
         const legend = document.getElementById('legend');
 
         //set up legend grades and labels
-        var labels = ['<strong>Park Score:</strong>'],
+        var labels = ['<strong>Average Park Score:</strong>'],
             vbreak;
         //iterate through grades and create a scaled circle and label for each
         for (var i = 0; i < grades.length; i++) {
