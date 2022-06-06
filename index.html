@@ -138,7 +138,8 @@
             map.on('click', 'parks-point', (event) => {
                 new mapboxgl.Popup()
                     .setLngLat(event.features[0].geometry.coordinates)
-                    .setHTML(`<strong>Rating:</strong> ${event.features[0].properties.rating}`)
+                    .setHTML(`<strong>Park:</strong> ${event.features[0].properties.name}` + ' ' + `<strong>Rating:</strong> ${event.features[0].properties.rating}`)
+                    //.setHTML(`<strong>Rating:</strong> ${event.features[0].properties.rating}`)
                     .addTo(map);
             });
 
