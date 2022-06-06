@@ -39,15 +39,15 @@
         }
 
         #text {
-            font-size: 18px;
-            margin: 20px
+            font-size: 16px;
+            margin: 20px;
         }
 
         .sidebar-content {
         position: absolute;
         width: 95%;
         height: 95%;
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 32px;
         color: lightgray;
         }
@@ -80,6 +80,20 @@
         .left.collapsed {
             transform: translateX(-295px);
         }
+
+        .mapboxgl-popup-content{
+            background-color: #1f1f1f;
+            font-size: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            color: lightgray;
+        }
+
+        .mapboxgl-popup-tip{
+            border-top-color: #1f1f1f !important;
+        }
+
+        .mapboxgl-popup-close-button{
+            color: lightgray;
+        }
  
 
         /* the layout of the legend panel */
@@ -88,13 +102,14 @@
             bottom: 0;
             right: 0;
             width: 110px;
-            background: #fff;
+            background: #1f1f1f;
             margin-right: 20px;
             margin-bottom: 40px;
             padding: 10px 20px 10px 10px;
             border-radius: 3px;
             text-align: center;
-            font-family: 'Open Sans', sans-serif;
+            color: lightgray;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         }
 
         /* each line for a break */
@@ -133,7 +148,7 @@
             <div class="sidebar-content rounded-rect flex-center">
                 <div id="text">
                     <h4>Methodology</h4>
-                    <p>To create this map, we utilized the Yelp API to parse through reviews left by yelp users on each park in the King County area. Through that, we were able to gather the average rating on each park as well as the top three reviews that users found helpful. This data is displayed within each park's popup window. Our goal  wil this map is to provide an all-in-one useful and easy to navigate user interface to highlight highly-rated parks in King County, available amenities at each park, safeness, etc. </p>
+                    <p>To create this map, we utilized the Yelp API to parse through reviews left by yelp users on each park in the King County area. Through that, we were able to gather the average rating on each park as well as the top three reviews that users found helpful. This data is displayed within each park's popup window. Our goal with this map is to provide an all-in-one useful and easy to navigate user interface to highlight highly-rated parks in King County, available amenities at each park, safeness, etc. In addition to that, we want to highlight low-rated parks that might be unsafe or abandoned in order to seek maintenance from the community/city and perhaps reveal “hidden gems”, less popular parks that have enjoyable amenities and sights.</p>
                 </div>
             <div class="sidebar-toggle rounded-rect left" onclick="toggleSidebar('left')">
             &rarr;
@@ -216,7 +231,6 @@
                 'waterway-label'
             );
 
-
             // click on tree to view rating in a popup
             map.on('click', 'parks-point', (event) => {
                 new mapboxgl.Popup()
@@ -225,7 +239,7 @@
                     //.setHTML(`<strong>Rating:</strong> ${event.features[0].properties.rating}`)
                     .addTo(map);
             });
-
+            
             
 
         });
@@ -252,16 +266,12 @@
         
         function toggleSidebar(id) {
             const elem = document.getElementById(id);
-            // Add or remove the 'collapsed' CSS class from the sidebar element.
-            // Returns boolean "true" or "false" whether 'collapsed' is in the class list.
             const collapsed = elem.classList.toggle('collapsed');
             const padding = {};
-            // 'id' is 'right' or 'left'. When run at start, this object looks like: '{left: 300}';
-            padding[id] = collapsed ? 0 : 300; // 0 if collapsed, 300 px if not. This matches the width of the sidebars in the .sidebar CSS class.
-            // Use `map.easeTo()` with a padding option to adjust the map's center accounting for the position of sidebars.
+            padding[id] = collapsed ? 0 : 300;
             map.easeTo({
             padding: padding,
-            duration: 1000 // In ms. This matches the CSS transition duration property.
+            duration: 1000 
             });
         }
 
