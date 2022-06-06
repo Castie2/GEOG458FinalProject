@@ -21,6 +21,67 @@
             width: 100%;
         }
 
+        .rounded-rect {
+        background: #1f1f1f;
+        border-radius: 10px;
+        box-shadow: 0 0 50px -25px black;
+        }
+        
+        .flex-center {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        
+        .flex-center.left {
+        left: 0px;
+        }
+
+        #text {
+            font-size: 18px;
+            margin: 20px
+        }
+
+        .sidebar-content {
+        position: absolute;
+        width: 95%;
+        height: 95%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 32px;
+        color: lightgray;
+        }
+        
+        .sidebar-toggle {
+        position: absolute;
+        width: 1.3em;
+        height: 1.3em;
+        overflow: visible;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        }
+        
+        .sidebar-toggle.left {
+        right: -1.5em;
+        }
+        
+        .sidebar-toggle:hover {
+        color: #0aa1cf;
+        cursor: pointer;
+        }
+        
+        .sidebar {
+        transition: transform 1s;
+        z-index: 1;
+        width: 300px;
+        height: 100%;
+        }
+        .left.collapsed {
+            transform: translateX(-295px);
+        }
+ 
+
         /* the layout of the legend panel */
         #legend {
             position: absolute;
@@ -61,14 +122,26 @@
 
         /* the text color of a hyper link */
         a {
-            color: black
+            color: blue
         }
     </style>
 </head>
 
 <body>
-    <div id="map"></div>
-    <div id="legend"></div>
+    <div id="map">
+        <div id="left" class="sidebar flex-center left collapsed">
+            <div class="sidebar-content rounded-rect flex-center">
+                <div id="text">
+                    <h4>Methodology</h4>
+                    <p>To create this map, we utilized the Yelp API to parse through reviews left by yelp users on each park in the King County area. Through that, we were able to gather the average rating on each park as well as the top three reviews that users found helpful. This data is displayed within each park's popup window. Our goal  wil this map is to provide an all-in-one useful and easy to navigate user interface to highlight highly-rated parks in King County, available amenities at each park, safeness, etc. </p>
+                </div>
+            <div class="sidebar-toggle rounded-rect left" onclick="toggleSidebar('left')">
+            &rarr;
+            </div>
+            </div>
+            </div>
+    </div>
+    <div id="legend"></div> 
     <script>
         mapboxgl.accessToken =
             'pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw';
@@ -165,6 +238,22 @@
                 '</span></p>');
 
         }
+        
+        function toggleSidebar(id) {
+            const elem = document.getElementById(id);
+            // Add or remove the 'collapsed' CSS class from the sidebar element.
+            // Returns boolean "true" or "false" whether 'collapsed' is in the class list.
+            const collapsed = elem.classList.toggle('collapsed');
+            const padding = {};
+            // 'id' is 'right' or 'left'. When run at start, this object looks like: '{left: 300}';
+            padding[id] = collapsed ? 0 : 300; // 0 if collapsed, 300 px if not. This matches the width of the sidebars in the .sidebar CSS class.
+            // Use `map.easeTo()` with a padding option to adjust the map's center accounting for the position of sidebars.
+            map.easeTo({
+            padding: padding,
+            duration: 1000 // In ms. This matches the CSS transition duration property.
+            });
+        }
+
         // add the data source
         const source =
         '<p style="text-align: right; font-size:10pt">Source: <a href="https://github.com/nytimes/covid-19-data/blob/43d32dde2f87bd4dafbb7d23f5d9e878124018b8/live/us-counties.csv">Yelp</a></p>';
