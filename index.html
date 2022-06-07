@@ -22,20 +22,20 @@
         }
 
         .rounded-rect {
-        background: #1f1f1f;
-        border-radius: 10px;
-        box-shadow: 0 0 50px -25px black;
+            background: #1f1f1f;
+            border-radius: 10px;
+            box-shadow: 0 0 50px -25px black;
         }
-        
+
         .flex-center {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        
+
         .flex-center.left {
-        left: 0px;
+            left: 0px;
         }
 
         #text {
@@ -44,57 +44,85 @@
         }
 
         .sidebar-content {
-        position: absolute;
-        width: 95%;
-        height: 95%;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        font-size: 32px;
-        color: lightgray;
+            position: absolute;
+            width: 95%;
+            height: 95%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-size: 32px;
+            color: lightgray;
         }
-        
+
         .sidebar-toggle {
-        position: absolute;
-        width: 1.3em;
-        height: 1.3em;
-        overflow: visible;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+            position: absolute;
+            width: 1.3em;
+            height: 1.3em;
+            overflow: visible;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
-        
+
         .sidebar-toggle.left {
-        right: -1.5em;
+            right: -1.5em;
         }
-        
+
         .sidebar-toggle:hover {
-        color: #0aa1cf;
-        cursor: pointer;
+            color: #0aa1cf;
+            cursor: pointer;
         }
-        
+
         .sidebar {
-        transition: transform 1s;
-        z-index: 1;
-        width: 300px;
-        height: 100%;
+            transition: transform 1s;
+            z-index: 1;
+            width: 300px;
+            height: 100%;
         }
+
         .left.collapsed {
             transform: translateX(-295px);
         }
 
-        .mapboxgl-popup-content{
+        .Button button {
+            appearance: button;
+            background-color: rgb(52, 103, 113);
+            background-image: none;
+            border: 1px solid darkcyan;
+            border-radius: 4px;
+            box-shadow: #fff 4px 4px 0 0, #000 4px 4px 0 1px;
+            box-sizing: border-box;
+            color: rgb(227, 241, 242);
+            cursor: pointer;
+            display: inline-block;
+            font-size: 14.8px;
+            font-weight: bold;
+            line-height: 20px;
+            margin: 0 5px 10px 0;
+            overflow: visible;
+            padding: 12px 40px;
+            text-align: center;
+            text-transform: none;
+            touch-action: manipulation;
+            user-select: none;
+            -webkit-user-select: none;
+            vertical-align: middle;
+            white-space: nowrap;
+
+        }
+
+        .mapboxgl-popup-content {
             background-color: #1f1f1f;
             font-size: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             color: lightgray;
         }
 
-        .mapboxgl-popup-tip{
+        .mapboxgl-popup-tip {
             border-top-color: #1f1f1f !important;
         }
 
-        .mapboxgl-popup-close-button{
+        .mapboxgl-popup-close-button {
             color: lightgray;
         }
- 
+
 
         /* the layout of the legend panel */
         #legend {
@@ -148,15 +176,28 @@
             <div class="sidebar-content rounded-rect flex-center">
                 <div id="text">
                     <h4>Methodology</h4>
-                    <p>To create this map, we utilized the Yelp API to parse through reviews left by yelp users on each park in the King County area. Through that, we were able to gather the average rating on each park as well as the top three reviews that users found helpful. This data is displayed within each park's popup window. Our goal with this map is to provide an all-in-one useful and easy to navigate user interface to highlight highly-rated parks in King County, available amenities at each park, safeness, etc. In addition to that, we want to highlight low-rated parks that might be unsafe or abandoned in order to seek maintenance from the community/city and perhaps reveal “hidden gems”, less popular parks that have enjoyable amenities and sights.</p>
+                    <p>To create this map, we utilized the Yelp API to parse through reviews left by yelp users on each
+                        park in the King County area. Through that, we were able to gather the average rating on each
+                        park as well as the top three reviews that users found helpful. This data is displayed within
+                        each park's popup window. Our goal with this map is to provide an all-in-one useful and easy to
+                        navigate user interface to highlight highly-rated parks in King County, available amenities at
+                        each park, safeness, etc. In addition to that, we want to highlight low-rated parks that might
+                        be unsafe or abandoned in order to seek maintenance from the community/city and perhaps reveal
+                        “hidden gems”, less popular parks that have enjoyable amenities and sights.</p>
+                    <div class="Button">
+                        <!--Form allows the button to link to another page-->
+                        <form action="http://127.0.0.1:5500/AboutUsPage.html">
+                            <button id="button">Learn About Us Here</button>
+                        </form>
+                    </div>
                 </div>
-            <div class="sidebar-toggle rounded-rect left" onclick="toggleSidebar('left')">
-            &rarr;
+                <div class="sidebar-toggle rounded-rect left" onclick="toggleSidebar('left')">
+                    &rarr;
+                </div>
             </div>
-            </div>
-            </div>
+        </div>
     </div>
-    <div id="legend"></div> 
+    <div id="legend"></div>
     <script>
         mapboxgl.accessToken =
             'pk.eyJ1IjoiamFrb2J6aGFvIiwiYSI6ImNpcms2YWsyMzAwMmtmbG5icTFxZ3ZkdncifQ.P9MBej1xacybKcDN_jehvw';
@@ -183,14 +224,14 @@
             });
 
             map.addLayer({
-                'id': 'parks-point',
-                'type': 'circle',
-                'source': 'parks',
-                'minizoom': 5,
-                'paint': {
-                    'circle-radius': {
-                        'property': 'rating',
-                        'stops': [
+                    'id': 'parks-point',
+                    'type': 'circle',
+                    'source': 'parks',
+                    'minizoom': 5,
+                    'paint': {
+                        'circle-radius': {
+                            'property': 'rating',
+                            'stops': [
                                 [{
                                     zoom: 5,
                                     value: grades[0]
@@ -235,10 +276,12 @@
             map.on('click', 'parks-point', (event) => {
                 new mapboxgl.Popup()
                     .setLngLat(event.features[0].geometry.coordinates)
-                    .setHTML(`<strong>Park:</strong> ${event.features[0].properties.name} <br> <strong>Rating:</strong> ${event.features[0].properties.rating} <br> <img src = ${event.features[0].properties.image} + "' style='width:200px;height:300x;'>`)
+                    .setHTML(
+                        `<strong>Park:</strong> ${event.features[0].properties.name} <br> <strong>Rating:</strong> ${event.features[0].properties.rating} <br> <img src = ${event.features[0].properties.image} + "' style='width:200px;height:300x;'>`
+                    )
                     .addTo(map);
             });
-            
+
         });
 
         // create legend
@@ -250,7 +293,7 @@
         //iterate through grades and create a scaled circle and label for each
         for (var i = 0; i < grades.length; i++) {
             vbreak = grades[i];
-            // you need to manually adjust the radius of each dot on the legend 
+            // you need to manually adjust the radius of each dot on the legend
             // in order to make sure the legend can be properly referred to the dot on the map.
             dot_radii = 2 * radii[1];
             labels.push(
@@ -260,21 +303,21 @@
                 '</span></p>');
 
         }
-        
+
         function toggleSidebar(id) {
             const elem = document.getElementById(id);
             const collapsed = elem.classList.toggle('collapsed');
             const padding = {};
             padding[id] = collapsed ? 0 : 300;
             map.easeTo({
-            padding: padding,
-            duration: 1000 
+                padding: padding,
+                duration: 1000
             });
         }
 
         // add the data source
         const source =
-        '<p style="text-align: right; font-size:10pt">Source: <a href="https://github.com/nytimes/covid-19-data/blob/43d32dde2f87bd4dafbb7d23f5d9e878124018b8/live/us-counties.csv">Yelp</a></p>';
+            '<p style="text-align: right; font-size:10pt">Source: <a href="https://github.com/nytimes/covid-19-data/blob/43d32dde2f87bd4dafbb7d23f5d9e878124018b8/live/us-counties.csv">Yelp</a></p>';
         // combine all the html codes.
         legend.innerHTML = labels.join('') + source;
     </script>
