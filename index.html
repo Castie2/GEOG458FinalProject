@@ -235,13 +235,10 @@
             map.on('click', 'parks-point', (event) => {
                 new mapboxgl.Popup()
                     .setLngLat(event.features[0].geometry.coordinates)
-                    .setHTML(`<strong>Park:</strong> ${event.features[0].properties.name}` + ' ' + `<strong>Rating:</strong> ${event.features[0].properties.rating} <p> <img src = ${event.features[0].properties.image} + "' style='width:200px;height:300x;'>`)
-                    //.setHTML(`<strong>Rating:</strong> ${event.features[0].properties.rating}`)
+                    .setHTML(`<strong>Park:</strong> ${event.features[0].properties.name} <br> <strong>Rating:</strong> ${event.features[0].properties.rating} <br> <img src = ${event.features[0].properties.image} + "' style='width:200px;height:300x;'>`)
                     .addTo(map);
             });
             
-            
-
         });
 
         // create legend
