@@ -189,9 +189,10 @@
 
 <body>
     <div id="map">
-        <div id="left" class="sidebar flex-center left collapsed">
+        <div id="left" class="sidebar flex-center left">
             <div class="sidebar-content rounded-rect flex-center">
                 <div id="text">
+                    <h3>Park Yelp Ratings in King County, Washington</h3>
                     <h4>Methodology</h4>
                     <p>To create this map, we utilized the Yelp API to parse through reviews left by yelp users on each
                         park in the King County area. Through that, we were able to gather the average rating on each
@@ -217,7 +218,6 @@
     <div id="legend"></div>
 
     <div class='map-overlay' id='features'>
-        <h2>King County Park Yelp Ratings</h2>
     </div>
     <div class='map-overlay'></div>
     <script>
@@ -299,7 +299,7 @@
                 new mapboxgl.Popup()
                     .setLngLat(event.features[0].geometry.coordinates)
                     .setHTML(
-                        `<strong>Park:</strong> ${event.features[0].properties.name} <br> <strong>Rating:</strong> ${event.features[0].properties.rating} <br> <img src = ${event.features[0].properties.image} + "' style='width:200px;height:300x;'>`
+                        `<strong>Park:</strong> ${event.features[0].properties.name} <br> <strong>Rating:</strong> ${event.features[0].properties.rating} <p> <img src = ${event.features[0].properties.image} + "' style='width:200px;height:300x;'>`
                     )
                     .addTo(map);
             });
