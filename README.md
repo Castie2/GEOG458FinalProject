@@ -11,7 +11,8 @@ Kaiji Obras <br>
 
 ## Project Goal
 
-## Applied Libraries abd Web Services
+## Applied Libraries and Web Services
+We primarily used Mapbox GL JS Library in creating our web map and hosted our web map using Github Pages. 
 
 ## Data source:
 [Yelp API](https://www.yelp.com/developers)
