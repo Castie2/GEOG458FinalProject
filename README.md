@@ -3,11 +3,11 @@
 For our project we want to capture the levels of happiness associated with the varying parks in King County. Using the Yelp API, the happiness level (on a scale of 1 to 5) will be measured by the average rating that Yelp users give each location in addition to tagging each park with the most occurring amenity/perk mentioned in the written reviews. Our project aims to assist a variety of people to locate parks that fit their criteria, such as discovering new locations, figuring out which parks to avoid, and whether the locations align with their specific needs (parking, pet-friendly spaces, cleanliness).
 
 ## Team Members:
-Frank Mwangi
-Jasmine Palaganas
-Elizabeth Castillo
-Zubaida Al.
-Kaiji Obras
+Frank Mwangi <br>
+Jasmine Palaganas <br>
+Elizabeth Castillo <br>
+Zubaida Al. <br>
+Kaiji Obras <br>
 
 ## Project Goal
 
